@@ -17,8 +17,8 @@ if [ ! $mp4_file ]; then
 fi
 
 # Check MP4 Resolution
-pixel_width=$(ffmpeg -i $mp4_file 2>&1 | grep 'Video:' | awk -F' ' '{print $11}' | awk -F'x' '{print $1}')
-pixel_height=$(ffmpeg -i $mp4_file 2>&1 | grep 'Video:' | awk -F' ' '{print $11}' | awk -F'x' '{print $2}' | awk -F',' '{print $1}')
+pixel_width=$(ffmpeg -i $mp4_file 2>&1 | grep 'Video:' | awk -F' ' '{print $7}' | awk -F'x' '{print $1}')
+pixel_height=$(ffmpeg -i $mp4_file 2>&1 | grep 'Video:' | awk -F' ' '{print $7}' | awk -F'x' '{print $2}' | awk -F',' '{print $1}')
 if [ ! $pixel_width ] || [ ! $pixel_height ]; then
     echo "Fatal!!! Cannot Analyse MP4's Resolution, Please Check File Format."
     exit 1
